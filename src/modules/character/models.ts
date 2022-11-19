@@ -60,6 +60,22 @@ export interface CharacterDescription {
     bonds: string | string[];
     flaws: string | string[];
 }
+/** Stats for character battle */
+export interface CharacterArmor {
+    class: number;
+    maxHP: number;
+    currentHP: number;
+}
+/** Object containing all character sheet information */
+export interface CharacterSheet {
+    initiative: number;
+    abilities: CharacterAbilities;
+    armor: CharacterArmor;
+    //TODO: Skills
+    //TODO: Saving throws
+    //TODO: Senses
+    //TODO: Proficiencies
+}
 /** Object containing all player character information */
 export interface Character {
     name: string;
@@ -67,11 +83,5 @@ export interface Character {
     class: CharacterClass;
     level: number;
     description: CharacterDescription;
-    abilities: CharacterAbilities;
-    //TODO: Battle stats (i.e. HP, armor class, the like)
-    //TODO: Skills
-    //TODO: Saving throws
-    //TODO: Senses
-    //TODO: Proficiencies
-    // Maybe combine the above into some object like "CharacterSheet"
+    sheet: CharacterSheet;
 }
