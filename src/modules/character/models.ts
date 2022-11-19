@@ -1,3 +1,9 @@
+/** A single attribute and its modifier (and optional bonus) */
+interface WithAbilityMod<T> {
+    attribute: T;
+    modifier: CharacterAbility;
+    bonus?: number;
+}
 /** Raw character abilities, given a score, define bonuses applied to
  *  dice roll events
  */
@@ -87,20 +93,17 @@ export enum CharacterSkill {
     STEALTH = "stealth",
     SURVIVAL = "survival"
 }
-/** A single character skill and its modifier */
-interface Skill {
-    name: CharacterSkill;
-    modifier: CharacterAbility;
-}
 /** Object containing all character skills with their modifiers */
-export type CharacterSkills = { [K in CharacterSkill]: Skill }
+export type CharacterSkills = { [K in CharacterSkill]: WithAbilityMod<CharacterSkill> }
+/** Object containing all character saving throws with their modifiers */
+export type CharacterSavingThrows = { [K in CharacterAbility]: WithAbilityMod<CharacterAbility> }
 /** Object containing all character sheet information */
 export interface CharacterSheet {
     initiative: number;
     abilities: CharacterAbilities;
     armor: CharacterArmor;
     skills: CharacterSkills;
-    //TODO: Saving throws
+    savingThrows: CharacterSavingThrows;
     //TODO: Senses
     //TODO: Proficiencies
 }
