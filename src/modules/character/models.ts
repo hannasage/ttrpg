@@ -29,15 +29,15 @@ export interface AbilityScore {
 export type CharacterAbilities = { [K in CharacterAbility]: AbilityScore }
 /** Two-dimensional character alignment options */
 export enum CharacterAlignment {
-    CE = "chaotic-evil",
-    CN = "chaotic-neutral",
-    CG = "chaotic-good",
-    TE = "true-evil",
-    TN = "true-neutral",
-    TG = "true-good",
-    LE = "lawful-evil",
-    LN = "lawful-neutral",
-    LG = "lawful-good"
+    CE = "chaoticEvil",
+    CN = "chaoticNeutral",
+    CG = "chaoticGood",
+    TE = "trueEvil",
+    TN = "trueNeutral",
+    TG = "trueGood",
+    LE = "lawfulEvil",
+    LN = "lawfulNeutral",
+    LG = "lawfulGood"
 }
 /** Basic physical features */
 interface DefaultFeatures {
@@ -66,12 +66,40 @@ export interface CharacterArmor {
     maxHP: number;
     currentHP: number;
 }
+/** Available character skills */
+export enum CharacterSkill {
+    ACROBATICS = "acrobatics",
+    ANIMAL_HANDLING = "animalHandling",
+    ARCANA = "arcana",
+    ATHLETICS = "athletics",
+    DECEPTION = "deception",
+    HISTORY = "history",
+    INSIGHT = "insight",
+    INTIMIDATION = "intimidation",
+    INVESTIGATION = "investigation",
+    MEDICINE = "medicine",
+    NATURE = "nature",
+    PERCEPTION = "perception",
+    PERFORMANCE = "performance",
+    PERSUASION = "persuasion",
+    RELIGION = "religion",
+    SLIGHT_OF_HAND = "slightOfHand",
+    STEALTH = "stealth",
+    SURVIVAL = "survival"
+}
+/** A single character skill and its modifier */
+interface Skill {
+    name: CharacterSkill;
+    modifier: CharacterAbility;
+}
+/** Object containing all character skills with their modifiers */
+export type CharacterSkills = { [K in CharacterSkill]: Skill }
 /** Object containing all character sheet information */
 export interface CharacterSheet {
     initiative: number;
     abilities: CharacterAbilities;
     armor: CharacterArmor;
-    //TODO: Skills
+    skills: CharacterSkills;
     //TODO: Saving throws
     //TODO: Senses
     //TODO: Proficiencies
