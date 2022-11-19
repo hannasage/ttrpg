@@ -67,5 +67,11 @@ export interface Character {
     class: CharacterClass;
     level: number;
     description: CharacterDescription;
-    abilities: CharacterAbilities
+    abilities: CharacterAbilities;
+    //TODO: Battle stats (i.e. HP, armor class, the like)
+    //TODO: Skills
+    //TODO: Saving throws
+    //TODO: Senses
+    //TODO: Proficiencies
+    // Maybe combine the above into some object like "CharacterSheet"
 }
