@@ -18,7 +18,7 @@ export class CharacterBuilder {
     this.character = {
       name: undefined,
       race: undefined,
-      class: undefined,
+      cClass: undefined,
       level: 1,
       description: undefined,
       sheet: undefined
@@ -45,6 +45,6 @@ export class CharacterBuilder {
     if (!Object.values(CharacterClass).includes(cClass)) {
       throw new InvalidParamError(`${this.constructor.name}: ${cClass} is not a valid CharacterClass`, "class");
     }
-    this.character.class = cClass;
+    this.character.cClass = cClass;
   }
 }
