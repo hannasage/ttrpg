@@ -10,6 +10,7 @@
     "rules": {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
         "arrow-body-style": "off",
         "prefer-arrow-callback": "off",
         "unused-imports/no-unused-imports": "error"

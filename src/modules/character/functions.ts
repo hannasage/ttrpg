@@ -12,7 +12,7 @@ import { Character, CharacterClass, CharacterRace } from "./models";
  *  with input validation and friendly errors.
  */
 export class CharacterBuilder {
-  readonly character: Partial<Character>;
+  private readonly character: Partial<Character>;
   /** Initialize undefined level 1 character */
   constructor() {
     this.character = {
@@ -23,6 +23,10 @@ export class CharacterBuilder {
       description: undefined,
       sheet: undefined
     };
+  }
+  /** Returns the current state of character in progress */
+  getInProgress() {
+    return this.character
   }
   /** Set the character's name with empty string and length validation */
   setName(name: string) {
