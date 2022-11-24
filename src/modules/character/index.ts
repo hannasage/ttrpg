@@ -1,3 +1,3 @@
 import * as CharacterModels from "./models";
-import * as CharacterFunctions from "./functions";
-export { CharacterModels, CharacterFunctions };
+import * as CharacterFunctions from "./characterBuilder";
+export {CharacterModels, CharacterFunctions};

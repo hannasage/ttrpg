@@ -1,10 +1,10 @@
-import {CharacterBuilder} from "../character/functions"
+import {CharacterBuilder} from "../character/characterBuilder"
 import {CharacterClass, CharacterRace} from "../character/models";
 
 describe("Character builder", () => {
     test("initializes with readonly empty Character", () => {
         const testBuilder = new CharacterBuilder();
-        expect(testBuilder.getInProgress()).toEqual({
+        expect(testBuilder.getCurrent().inProgress).toEqual({
             name: undefined,
             race: undefined,
             cClass: undefined,
@@ -18,7 +18,7 @@ describe("Character builder", () => {
         testBuilder.setName("Test Character");
         testBuilder.setRace(CharacterRace.HUMAN);
         testBuilder.setClass(CharacterClass.CODER);
-        expect(testBuilder.getInProgress()).toEqual({
+        expect(testBuilder.getCurrent().inProgress).toEqual({
             name: "Test Character",
             race: "human",
             cClass: "coder",
