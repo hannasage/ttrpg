@@ -115,7 +115,7 @@ export interface CharacterSheet {
 export interface Character {
   name: string;
   race: CharacterRace;
-  class: CharacterClass;
+  cClass: CharacterClass;
   level: number;
   description: CharacterDescription;
   sheet: CharacterSheet;
