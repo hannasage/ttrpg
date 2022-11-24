@@ -1,1 +1,1 @@
-console.log("ttrpg v0.0.1 (alpha)")
+console.log("ttrpg v0.0.1 (alpha)");
