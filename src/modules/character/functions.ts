@@ -53,34 +53,22 @@ export class CharacterBuilder {
     };
   }
   /** Returns the current state of character in progress */
-  getInProgress() {
-    return this.character
-  }
+  getInProgress() { return this.character }
   /** Set the character's name with empty string and length validation */
-  setName(name: string) {
-    if (this.validate("name", name)) {
-      this.character.name = name;
-    } else {
-      console.error("Character name could not be updated")
-    }
-  }
+  setName(name: string) { this.setAttr("name", name) }
   /** Set the character's race with runtime type check for {@link CharacterRace} */
-  setRace(race: CharacterRace) {
-    if (this.validate("race", race)) {
-      this.character.race = race;
-    } else {
-      console.error("Character race could not be updated")
-    }
-  }
+  setRace(race: CharacterRace) { this.setAttr("race", race) }
   /** Set the character's class with runtime type check for {@link CharacterClass} */
-  setClass(cClass: CharacterClass) {
-    if (this.validate("cClass", cClass)) {
-      this.character.cClass = cClass;
+  setClass(cClass: CharacterClass) { this.setAttr("cClass", cClass) }
+  /** Validates and applies an attribute to a character in progress */
+  private setAttr(attr: keyof Character, arg: any) {
+    if (this.validate(attr, arg)) {
+      this.character[attr] = arg;
     } else {
-      console.error("Character class could not be updated")
+      console.error(`Character ${attr} could not be updated`)
     }
   }
-
+  /** Validates the given args against the attribute's validator functions */
   private validate(attr: keyof Character, ...args: any[]) {
     const validator = this.validators?.[attr]
     if (!!validator) {
