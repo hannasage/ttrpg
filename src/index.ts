@@ -1,2 +1,1 @@
-import * as CharacterModule from "./modules/character";
-export { CharacterModule };
+console.log("ttrpg v0.0.1 (alpha)")
