@@ -11,6 +11,8 @@
     "lint:write": "eslint --fix .",
     "test": "jest"
   },
+  "typings": "build/index",
+  "files": ["build/"],
   "author": "kevinhaube",
   "license": "ISC",
   "dependencies": {},

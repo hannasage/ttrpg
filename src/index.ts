@@ -1,1 +1,2 @@
-console.log("ttrpg v0.1.0 (alpha)");
+import { CharacterBuilder } from "./modules/builders/characterBuilder";
+export { CharacterBuilder }
