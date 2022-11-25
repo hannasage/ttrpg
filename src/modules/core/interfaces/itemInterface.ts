@@ -12,9 +12,9 @@ export class ItemInterface<T extends Item> {
     getName() {return this.name}
     getActions() {return this.actions}
     getRating() {return this.rating}
-    /** Use an action on your turn */
+    /** Use an action on your turn, and  */
     useAction(action: Action) { 
-        //TODO
+        if (action?.cost !== undefined) this.payThePrice(action!.cost) 
     }
     /** Enforce the cost of an action */
     protected payThePrice(cost: ActionCost) {
