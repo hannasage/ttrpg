@@ -105,7 +105,8 @@ export type CharacterSavingThrows = {
   [K in CharacterAbility]: WithAbilityMod<CharacterAbility>;
 };
 export interface CharacterInventory {
-  equipped: InventoryItem[]
+  equipped: InventoryItem[];
+  backpack: InventoryItem[];
 }
 /** Object containing all character sheet information */
 export default interface CharacterSheet {
