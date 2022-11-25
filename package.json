@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "prebuild": "rm -rf ./build",
-    "build": "tsc --build",
+    "build": "tsc --project tsconfig.build.json",
     "prestart": "yarn build",
     "start": "node ./build/index.js",
     "lint:write": "eslint --fix .",
