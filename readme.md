@@ -25,7 +25,9 @@ By this release, a user of this library will be able to:
 
 Obviously, to get to this ambitious v1 goal, a strong mvp would help.
 
-### v0.7.0-beta `#mvp` `#in-progress`
+### v0.7.0-beta 
+
+`#mvp` `#in-progress`
 
 In this initial release, the `ttrpg` npm package will be installable, and configurable with character classes and races. It will be able to generate type-safe characters and weapons using `Builder` classes.
 
