@@ -1,5 +1,5 @@
-import { Character, CharacterClass, CharacterInventory, CharacterRace } from "../core/models/characterModels";
-import { BuilderWithMiddleware, SetupBuilder } from "../../utils/builderWithMiddleware";
+import { Character, CharacterClass, CharacterInventory, CharacterRace } from "../models/characterModels";
+import { BuilderWithMiddleware, SetupBuilder } from "../../../utils/builderWithMiddleware";
 
 /** Build a character with configurable middleware validation for each property
  * @param setup {SetupBuilder<Character>} Optional configuration for builder (see: {@link SetupBuilder})

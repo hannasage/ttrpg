@@ -1,2 +1,2 @@
-import { CharacterBuilder } from "./modules/builders/characterBuilder";
+import { CharacterBuilder } from "./modules/core/builders/characterBuilder";
 export { CharacterBuilder }

@@ -1,6 +1,6 @@
-import {BuilderWithMiddleware, SetupBuilder} from "../../utils/builderWithMiddleware";
-import {Dice} from "../core/enums/dice";
-import {Item, ItemActions, ItemRating, WeaponItem} from "../core/models/itemModels";
+import {BuilderWithMiddleware, SetupBuilder} from "../../../utils/builderWithMiddleware";
+import {Dice} from "../enums/dice";
+import {Item, ItemActions, ItemRating, WeaponItem} from "../models/itemModels";
 
 /** The highest-order parent of any item classes */
 class ItemBuilder<T extends Item> extends BuilderWithMiddleware<T> {
