@@ -23,9 +23,11 @@ By this release, a user of this library will be able to:
 - An effect can be applied to a `Character` when an `Item` interacts
 - ...and more!
 
-Obviously, to get to this ambitious v1 goal, a strong mvp would help.
+Obviously, to get to this ambitious v1 goal, a strong mvp would help. Feel free to join in on our [discussion here](https://github.com/kevinhaube/ttrpg/discussions/10)!
 
-### v0.7.0-beta `#mvp` `#in-progress`
+### v0.7.0-beta 
+
+`#mvp` `#in-progress`
 
 In this initial release, the `ttrpg` npm package will be installable, and configurable with character classes and races. It will be able to generate type-safe characters and weapons using `Builder` classes.
 
