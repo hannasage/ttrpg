@@ -30,10 +30,11 @@ export interface Item {
     actions: ItemActions;
     rating: ItemRating;
 }
-
 /** Core attributes for a weapon */
 export interface WeaponItem extends Item {
     range: number;
     damage: string;
     limit?: number;
 }
+/** Union type of any CharacterInventory item */
+export type InventoryItem = Item | WeaponItem

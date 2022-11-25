@@ -1,3 +1,6 @@
+import {InventoryItem} from "./itemModels";
+
+
 /** A single attribute and its modifier (and optional bonus) */
 interface WithAbilityMod<T> {
   attribute: T;
@@ -101,8 +104,11 @@ export type CharacterSkills = {
 export type CharacterSavingThrows = {
   [K in CharacterAbility]: WithAbilityMod<CharacterAbility>;
 };
+export interface CharacterInventory {
+  equipped: InventoryItem[]
+}
 /** Object containing all character sheet information */
-export interface CharacterSheet {
+export default interface CharacterSheet {
   initiative: number;
   abilities: CharacterAbilities;
   armor: CharacterArmor;
@@ -119,4 +125,5 @@ export interface Character {
   level: number;
   description: CharacterDescription;
   sheet: CharacterSheet;
+  inventory: CharacterInventory;
 }
