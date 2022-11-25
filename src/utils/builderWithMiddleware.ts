@@ -22,8 +22,13 @@ export class BuilderWithMiddleware<T> {
   }
   /** Shows current in-progress object */
   getCurrent() { return {validators: this.validators, inProgress: this.inProgress, errors: this.errors} }
+  /** Build the final object */
+  build() {
+    //TODO: Final checks?
+    return this.inProgress;
+  }
   /** Set an attribute */
-  setAttr(attr: keyof T, arg: any | undefined) {
+  protected setAttr(attr: keyof T, arg: any | undefined) {
     if (arg === undefined) {
       this.setUndefined(attr)
       return;
@@ -35,11 +40,6 @@ export class BuilderWithMiddleware<T> {
     } else {
       this.setUndefined(attr)
     }
-  }
-  /** Build the final object */
-  build() {
-    //TODO: Final checks?
-    return this.inProgress;
   }
   /** Validates the given args against the attribute's validator functions */
   private validate(attr: keyof T, ...args: any[]) {

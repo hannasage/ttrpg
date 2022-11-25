@@ -1,10 +1,13 @@
 import {BuilderError, BuilderWithMiddleware} from "../builderWithMiddleware"
 
 type TestType = { test: string }
+class TestTypeBuilder extends BuilderWithMiddleware<TestType> {
+    setTestValue(s: string) { this.setAttr("test", s) }
+}
 
 describe("BuilderWithMiddleware", () => {
     test("initializes with empty validators and object", () => {
-        const builder = new BuilderWithMiddleware<TestType>();
+        const builder = new TestTypeBuilder();
         expect(builder.getCurrent()).toEqual({
             validators: {},
             inProgress: {},
@@ -12,7 +15,7 @@ describe("BuilderWithMiddleware", () => {
         })
     })
     test("validates attributes as they are set", () => {
-        const builder = new BuilderWithMiddleware<TestType>({
+        const builder = new TestTypeBuilder({
             validators: {
                 test: [
                     (s: string) => { if (s.trim() === "") throw Error("EMPTY_STRING") },
@@ -21,7 +24,7 @@ describe("BuilderWithMiddleware", () => {
             }
         });
         // First bad value
-        builder.setAttr("test", "   ")
+        builder.setTestValue("   ")
         const { errors: e, inProgress: ip } = builder.getCurrent()
         expect(e[0]).toEqual({
             message: "EMPTY_STRING",
@@ -32,7 +35,7 @@ describe("BuilderWithMiddleware", () => {
             test: undefined
         })
         // Second bad value
-        builder.setAttr("test", "failure")
+        builder.setTestValue("failure")
         const { errors: e2, inProgress: ip2 } = builder.getCurrent()
         expect(e2[0]).toEqual({
             message: "BAD_VALUE",
@@ -43,7 +46,7 @@ describe("BuilderWithMiddleware", () => {
             test: undefined
         })
         // Good values
-        builder.setAttr("test", "success")
+        builder.setTestValue("success")
         const { errors: e3, inProgress: ip3 } = builder.getCurrent();
         expect(e3.length).toEqual(2)
         expect(ip3).toEqual({
