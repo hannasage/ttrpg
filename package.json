@@ -1,7 +1,7 @@
 {
   "name": "ttrpg",
-  "version": "1.0.0",
-  "description": "A module of ttrpg utilities",
+  "version": "0.1.0-dev",
+  "description": "A TypeScript utilities package for creating tabletop rpg data assets.",
   "main": "index.ts",
   "scripts": {
     "prebuild": "rm -rf ./build",
@@ -14,6 +14,10 @@
   "typings": "build/index",
   "files": ["build/"],
   "author": "kevinhaube",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinhaube/ttrpg"
+  },
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
