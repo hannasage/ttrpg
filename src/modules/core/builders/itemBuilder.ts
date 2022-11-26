@@ -12,10 +12,10 @@ class ItemBuilder<T extends Item> extends BuilderWithMiddleware<T> {
     /** Set the rating of the weapon */
     setRating(rating: ItemRating) { this.setAttr("rating", rating) }
 }
-//TODO: Build an item factory
+/** Build a weapon item */
 export class WeaponBuilder extends ItemBuilder<WeaponItem> {
     constructor(setup?: SetupBuilder<WeaponItem>) { super(setup) }
-    // inherits setName from ItemBuilder
+    /** Set the range this weapon's attacks carry */
     setRange(range: number) { this.setAttr("range", range) }
     /** Set the damage dice for a weapon's attack
      *  @example
