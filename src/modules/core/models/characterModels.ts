@@ -1,23 +1,4 @@
 import {InventoryItem} from "./itemModels";
-
-
-/** A single attribute and its modifier (and optional bonus) */
-interface WithAbilityMod<T> {
-  attribute: T;
-  modifier: CharacterAbility;
-  bonus?: number;
-}
-/** Raw character abilities, given a score, define bonuses applied to
- *  dice roll events
- */
-export enum CharacterAbility {
-  STR = "strength",
-  DEX = "dexterity",
-  CON = "constitution",
-  INT = "intelligence",
-  WIS = "wisdom",
-  CHA = "charisma",
-}
 /** Enum of playable races */
 export enum CharacterRace {
   HUMAN = "human",
@@ -26,16 +7,6 @@ export enum CharacterRace {
 export enum CharacterClass {
   CODER = "coder",
 }
-/** Total score and breakdown of an ability's total score */
-export interface AbilityScore {
-  total: number;
-  base: number;
-  modifier: number;
-  raceBonus: number | null;
-  bonus: number | null;
-}
-/** Object containing collection of all player ability scores */
-export type CharacterAbilities = { [K in CharacterAbility]: AbilityScore };
 /** Two-dimensional character alignment options */
 export enum CharacterAlignment {
   CE = "chaoticEvil",
@@ -48,8 +19,36 @@ export enum CharacterAlignment {
   LN = "lawfulNeutral",
   LG = "lawfulGood",
 }
+/** Raw character abilities, given a score, define bonuses applied to
+ *  dice roll events
+ */
+export enum CharacterAbility {
+  STR = "strength",
+  DEX = "dexterity",
+  CON = "constitution",
+  INT = "intelligence",
+  WIS = "wisdom",
+  CHA = "charisma",
+}
+/** A single attribute and its modifier (and optional bonus) */
+interface WithAbilityMod<T> {
+  attribute: T;
+  modifier: CharacterAbility;
+  bonus?: number;
+}
+/** Total score and breakdown of an ability's total score */
+export interface AbilityScore {
+  total: number;
+  base: number;
+  modifier: number;
+  raceBonus: number | null;
+  bonus: number | null;
+}
+/** Object containing collection of all player ability scores */
+export type CharacterAbilities = { [K in CharacterAbility]: AbilityScore };
+
 /** Basic physical features */
-interface DefaultFeatures {
+export type PhysicalFeatures = {
   hair: string;
   skin: string;
   eyes: string;
@@ -57,8 +56,37 @@ interface DefaultFeatures {
   weight: number;
   age: number;
 }
-/** Basic physical features, plus a user-defined set of additional features (optional) */
-export type PhysicalFeatures<T = undefined> = DefaultFeatures & T;
+/** Out of the box skills for ttrpg gameplay */
+export type CharacterSkills = {
+  acrobatics: WithAbilityMod<keyof CharacterSkills>;
+  animalHandling: WithAbilityMod<keyof CharacterSkills>;
+  arcana: WithAbilityMod<keyof CharacterSkills>;
+  athletics: WithAbilityMod<keyof CharacterSkills>;
+  deception: WithAbilityMod<keyof CharacterSkills>;
+  history: WithAbilityMod<keyof CharacterSkills>;
+  insight: WithAbilityMod<keyof CharacterSkills>;
+  intimidation: WithAbilityMod<keyof CharacterSkills>;
+  investigation: WithAbilityMod<keyof CharacterSkills>;
+  medicine: WithAbilityMod<keyof CharacterSkills>;
+  nature: WithAbilityMod<keyof CharacterSkills>;
+  perception: WithAbilityMod<keyof CharacterSkills>;
+  performance: WithAbilityMod<keyof CharacterSkills>;
+  persuasion: WithAbilityMod<keyof CharacterSkills>;
+  religion: WithAbilityMod<keyof CharacterSkills>;
+  slightOfHand: WithAbilityMod<keyof CharacterSkills>;
+  stealth: WithAbilityMod<keyof CharacterSkills>;
+  survival: WithAbilityMod<keyof CharacterSkills>;
+}
+/** Object containing all character saving throws with their modifiers */
+export type CharacterSavingThrows = {
+  [K in CharacterAbility]: WithAbilityMod<CharacterAbility>;
+};
+/** Stats for character battle */
+export interface CharacterHealth {
+  armorClass: number;
+  maxHP: number;
+  currentHP: number;
+}
 /** Description elements for a player character */
 export interface CharacterDescription {
   background: string;
@@ -69,61 +97,27 @@ export interface CharacterDescription {
   bonds: string | string[];
   flaws: string | string[];
 }
-/** Stats for character battle */
-export interface CharacterArmor {
-  class: number;
-  maxHP: number;
-  currentHP: number;
-}
-/** Available character skills */
-export enum CharacterSkill {
-  ACROBATICS = "acrobatics",
-  ANIMAL_HANDLING = "animalHandling",
-  ARCANA = "arcana",
-  ATHLETICS = "athletics",
-  DECEPTION = "deception",
-  HISTORY = "history",
-  INSIGHT = "insight",
-  INTIMIDATION = "intimidation",
-  INVESTIGATION = "investigation",
-  MEDICINE = "medicine",
-  NATURE = "nature",
-  PERCEPTION = "perception",
-  PERFORMANCE = "performance",
-  PERSUASION = "persuasion",
-  RELIGION = "religion",
-  SLIGHT_OF_HAND = "slightOfHand",
-  STEALTH = "stealth",
-  SURVIVAL = "survival",
-}
-/** Object containing all character skills with their modifiers */
-export type CharacterSkills = {
-  [K in CharacterSkill]: WithAbilityMod<CharacterSkill>;
-};
-/** Object containing all character saving throws with their modifiers */
-export type CharacterSavingThrows = {
-  [K in CharacterAbility]: WithAbilityMod<CharacterAbility>;
-};
-export interface CharacterInventory {
-  equipped: InventoryItem[];
-  backpack: InventoryItem[];
-}
 /** Object containing all character sheet information */
 export default interface CharacterSheet {
   initiative: number;
   abilities: CharacterAbilities;
-  armor: CharacterArmor;
   skills: CharacterSkills;
   savingThrows: CharacterSavingThrows;
   //TODO: Senses
   //TODO: Proficiencies
 }
+// Object for character inventory
+export interface CharacterInventory {
+  equipped: InventoryItem[];
+  backpack: InventoryItem[];
+}
 /** Object containing all player character information */
-export interface Character {
+export type Character<R, C> = {
   name: string;
-  race: CharacterRace;
-  cClass: CharacterClass;
+  race: R;
+  cClass: C;
   level: number;
+  health: CharacterHealth;
   description: CharacterDescription;
   sheet: CharacterSheet;
   inventory: CharacterInventory;
