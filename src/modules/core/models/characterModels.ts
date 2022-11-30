@@ -117,6 +117,7 @@ export type Character<R, C> = {
   race: R;
   cClass: C;
   level: number;
+  currency: number;
   health: CharacterHealth;
   description: CharacterDescription;
   sheet: CharacterSheet;
