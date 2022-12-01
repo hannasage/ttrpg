@@ -23,9 +23,9 @@ export class BuilderWithMiddleware<T> {
   /** Shows current in-progress object */
   getCurrent() { return {validators: this.validators, inProgress: this.inProgress, errors: this.errors} }
   /** Build the final object */
-  build() {
+  build(): T {
     //TODO: Final checks?
-    return this.inProgress;
+    return this.inProgress as T;
   }
   /** Set an attribute */
   protected setAttr(attr: keyof T, arg: any | undefined) {

@@ -112,11 +112,12 @@ export interface CharacterInventory {
   backpack: InventoryItem[];
 }
 /** Object containing all player character information */
-export type Character<R, C> = {
+export type Character<R = CharacterRace, C = CharacterClass> = {
   name: string;
   race: R;
   cClass: C;
   level: number;
+  currency: number;
   health: CharacterHealth;
   description: CharacterDescription;
   sheet: CharacterSheet;

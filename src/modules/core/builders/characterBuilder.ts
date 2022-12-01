@@ -24,4 +24,6 @@ extends BuilderWithMiddleware<Character<R, C>> {
   setClass(cClass: C) { this.setAttr("cClass", cClass) }
   /** Set the items available in the character's inventory */
   setInventory(inventory: CharacterInventory) { this.setAttr("inventory", inventory) }
+  /** Build the character */
+  buildCharacter() { super.build() }
 }
