@@ -1,37 +1,41 @@
 # Tabletop Role-playing Games
 
-A node package for those who enjoy sitting around tables, crawling dungeons, and otherwise causing mayhem in fictional worlds.
+>*This engine is in development. Getting Started instructions will be added once the engince has a production release.*
 
-## Why make an `npm` package for a _tabletop_ game?
+## Overview
 
-This package will provide semi-configurable utilities that generate common ttrpg data structures, such as a character, weapon, character sheet, inventory, abilities, etc. The reason I say _semi_-configurable is because, while things like `Character.race` and `Character.role` can vary from game system to game system, typically we adopt norms, such as the 9 various alignments.
+Hello! My name is Kevin, I'm a software engineer who recently started enjoying tabletop roleplaying games with friends! Naturally, as I progressed through the "buy all the dice" phase, and "let me build a notebook" phase, I found myself unenthused with what I'd gathered. See, there's great digital tools out there for D&D, but most homebrew stuff you are forced to use secondary methods for keeping track of the growing rules, item upgrades, character progression, and more.
 
-What this package doesn't concern itself with is what you _do_ with those items thereafter! You can send them off to be stored in a database somewhere as a part of a bespoke platform you and your friends use to play D&D, or just build an item comparison tool show off your skills.
+Then, I thought, "What if anyone could get in on this? What if I could build _my_ party's ruleset, but then Jane Doe could build her team's ruleset, and use the _same_ front-end client to reliably store and operate character sheets across any ruleset(s)?"
 
-## How will we achieve this?
+So, that's the vision for the `ttrpg` ecosystem: **an engine that enables easy creation of rules, and can be used to drive a single client application that allows a player to manage characters across infinite worlds.**
 
-Objectively, the character and closely-related elements are the _most_ important, as everyone at the table can utilize a character sheet, whether it's the players themselves tracking in-game changes or the DM checking a player's `DEX` modifier, there's use for all. That said, the following considerations have been made for the initial release:
+## The Engine
 
-### v1.0.0
+Much like a video game requires *many* engines to operate, doing everything from converting mathematics to computer geometry, and eventually cinematics and animation, to driving the controls and interaction, this engine exists to create a set of tabletop rpg objects, like characters and monsters, with defined rules. Each `ttrpg` rule module will export the gameplay tools with their rules applied, so a client may install the package and utilize the same gameplay-enhancing tools in-client across any rule module in the `ttrpg` ecosystem. 
 
-By this release, a user of this library will be able to:
+The idea is that the engine drives _all_ gameplay functionality, and rulesets only define rules. As new client experiences are created with custom extension of the engine through the ruleset layer, these are the types of things considered in the scope of adoption for the engine.
 
-- Create a `Character` with input validation
-- See and track character stats and changes in-game through `Character.sheet`
-- See and track equipped/stored items using `Character.inventory`
-- Create a custom `Item` with input validation (weapon, armor, etc.)
-- An effect can be applied to a `Character` when an `Item` interacts
-- ...and more!
+>The long-term vision is a slew of requests for features in the engine, fueled by the creativity of tabletop gamers around the world using the engine to build various clients to enhance gameplay in unique ways. The engine will always remain open-source!
 
-Obviously, to get to this ambitious v1 goal, a strong mvp would help. Feel free to join in on our [discussion here](https://github.com/kevinhaube/ttrpg/discussions/10)!
+## Rule Modules
 
-### v0.7.0-beta 
+As mentioned, the engine itself exists to build a Rule Module; that is, a package utilizing the `ttrpg` engine, and existing on npm under the `@ttrpg/` scope! Every rule module must export all the [[#Required exports|required exports]] to integrate into the official `ttrpg` client, though the package quality is the responsibility the package maintainer. The official client will be set up to handle cases where rulesets do not properly configure their exports. 
 
-`#mvp` `#in-progress`
+#### Required exports
 
-In this initial release, the `ttrpg` npm package will be installable, and configurable with character classes and races. It will be able to generate type-safe characters and weapons using `Builder` classes.
+- *characterBuilder (Coming Soon)*
+- *weaponBuilder (Coming Soon)*
+- *wearableBuilder (Coming Soon)*
+- *trinketBuilder (Coming Soon)*
 
-More on the characters, this release will make available a static character sheet. In the first full release, this sheet will become interactive so you can track progress in-game. Beyond this, even, the character sheet will become configurable with unique sills and more.
+## Client Applications
 
-Similarly, a character will have an established inventory that add and remove items. In later releases, the system will be expanded to include optional tracking of weight carried, and an equip/remove system for wearables.
+A good client app should be able to utilize any ruleset. If you wish to extend the functionality of a client with a ruleset implementing non-engine functionality, it's recommended you do so with caution, as these are not yet fully engine-supported. With the engine, a `ttrpg` client, codename: `homebrew-beyond`, will also be made available and open-source.
 
+#### Official features
+
+- *Character Creation (Coming Soon)*
+- *Character sheet (Coming Soon)*
+- *Inventory (Coming Soon)*
+- *Create Weapons, Wearables, and Trinkets (Coming Soon)*
