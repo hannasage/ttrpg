@@ -20,7 +20,7 @@ The idea is that the engine drives _all_ gameplay functionality, and rulesets on
 
 ## Rule Modules
 
-As mentioned, the engine itself exists to build a Rule Module; that is, a package utilizing the `ttrpg` engine, and existing on npm under the `@ttrpg/` scope! Every rule module must export all the [[#Required exports|required exports]] to integrate into the official `ttrpg` client, though the package quality is the responsibility the package maintainer. The official client will be set up to handle cases where rulesets do not properly configure their exports. 
+As mentioned, the engine itself exists to build a Rule Module; that is, a package utilizing the `ttrpg` engine, and existing on npm under the `@ttrpg/` scope! Every rule module must export all the [required exports](#required-exports) to integrate into the official `ttrpg` client, though the package quality is the responsibility the package maintainer. The official client will be set up to handle cases where rulesets do not properly configure their exports. 
 
 #### Required exports
 
