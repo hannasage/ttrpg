@@ -100,7 +100,6 @@ export interface CharacterDescription {
 /** Object containing all character sheet information */
 export default interface CharacterSheet {
   initiative: number;
-  abilities: CharacterAbilities;
   skills: CharacterSkills;
   savingThrows: CharacterSavingThrows;
   //TODO: Senses
@@ -117,6 +116,7 @@ export type Character<R = CharacterRace, C = CharacterClass> = {
   race: R;
   cClass: C;
   level: number;
+  abilities: CharacterAbilities;
   currency: number;
   health: CharacterHealth;
   description: CharacterDescription;
